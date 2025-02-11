@@ -29,10 +29,6 @@ void HideCursor() {
     SetConsoleCursorInfo(hConsole, &cursorInfo);
 }
 
-void SetColor(int color) {
-    SetConsoleTextAttribute(hConsole, color);
-}
-
 void GameInit() {
     isGameOver = false;
     currentDirection = STOP;
@@ -44,7 +40,7 @@ void GameInit() {
     snakeTailLength = 0;
 }
 
-void GameRender(const string& playerName, int snakeColor) {
+void GameRender(const string& playerName) {
     SetCursorPosition(0, 0);
 
     for (int i = 0; i < width + 2; i++)
@@ -56,25 +52,21 @@ void GameRender(const string& playerName, int snakeColor) {
             if (j == 0 || j == width)
                 cout << "|";
             else if (i == snakeY && j == snakeX) {
-                SetColor(snakeColor);
                 cout << "O";
             }
             else if (i == fruitCordY && j == fruitCordX) {
-                SetColor(12);
                 cout << "#";
             }
             else {
                 bool prTail = false;
                 for (int k = 0; k < snakeTailLength; k++) {
                     if (snakeTailX[k] == j && snakeTailY[k] == i) {
-                        SetColor(snakeColor);
                         cout << "o";
                         prTail = true;
                         break;
                     }
                 }
                 if (!prTail) {
-                    SetColor(7);
                     cout << " ";
                 }
             }
@@ -86,22 +78,10 @@ void GameRender(const string& playerName, int snakeColor) {
         cout << "-";
     cout << endl;
 
-    SetColor(7);
     cout << playerName << "'s Score: " << playerScore << endl;
 }
 
-int GetNextColor(int currentColor) {
-    switch (currentColor) {
-        case 10: return 11;
-        case 11: return 12;
-        case 12: return 13;
-        case 13: return 14;
-        case 14: return 15;
-        default: return 10;
-    }
-}
-
-void UpdateGame(int &snakeColor) {
+void UpdateGame() {
     int prevX = snakeTailX[0];
     int prevY = snakeTailY[0];
     int prev2X, prev2Y;
@@ -145,7 +125,6 @@ void UpdateGame(int &snakeColor) {
         fruitCordX = rand() % width;
         fruitCordY = rand() % height;
         snakeTailLength++;
-        snakeColor = GetNextColor(snakeColor);
     }
 }
 
@@ -177,12 +156,11 @@ int main() {
 
     GameInit();
     HideCursor();
-    int snakeColor = 10;
 
     while (!isGameOver) {
-        GameRender(playerName, snakeColor);
+        GameRender(playerName);
         UserInput(); 
-        UpdateGame(snakeColor);
+        UpdateGame();
         Sleep(dfc);
     }
 
