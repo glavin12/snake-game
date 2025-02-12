@@ -15,7 +15,7 @@ The Snake Game is a classic arcade game where the player controls a snake to eat
 To run this project, you need:
 - A C++ compiler (e.g., g++, MinGW, or MSVC)
 - A terminal or console that supports real-time input
-- Windows, Linux, or macOS
+- Windows
 
 ## How to Play
 1. Compile and run the program.
