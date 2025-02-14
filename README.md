@@ -7,9 +7,8 @@ The Snake Game is a classic arcade game where the player controls a snake to eat
 - **Console-Based Game**: Simple text-based UI using ASCII characters.
 - **Smooth Controls**: Move the snake using arrow keys (`WASD`).
 - **Score System**: Increases based on food eaten.
-- **Game Over Condition**: The game ends when the snake collides with itself or the walls.
-- **Adjustable Speed**: The snake's speed increases as the game progresses.
-- **Restart Option**: Allows users to replay without restarting the application.
+- **Game Over Condition**: The game ends when the snake collides with itself or the wall
+
 
 ## Requirements
 To run this project, you need:
@@ -23,7 +22,7 @@ To run this project, you need:
 3. Eat the food (`#`) to grow longer and increase your score.
 4. Avoid hitting the walls or yourself.
 5. The game ends when the snake collides with itself or the wall.
-6. Restart the game by following the on-screen instructions.
+
 
 ## Installation & Compilation
 ### Using g++ (Windows):
