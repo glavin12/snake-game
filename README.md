@@ -29,4 +29,4 @@ To run this project, you need:
 1. Open a terminal and navigate to the project folder.
 2. Compile the program using:
    ```sh
-   g++ -o snake_game snake_game.cpp
+   g++ snake_game.cpp -o snake_game
